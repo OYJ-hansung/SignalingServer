@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpEntity;
@@ -35,10 +33,8 @@ import java.util.Map;
 public class VideoRoomController {
 
     // 테스트용 세션 리스트.
-    private static ArrayList<TestSession> sessionIdList;
-    private static SimpMessagingTemplate template;
-
-    private static Logger log = LoggerFactory.getLogger(VideoRoomController.class);
+    private final ArrayList<TestSession> sessionIdList;
+    private final SimpMessagingTemplate template;
 
     // 실시간으로 들어온 세션 감지하여 전체 세션 리스트 반환
     @MessageMapping("/video/joined-room-info")
